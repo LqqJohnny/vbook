@@ -2,12 +2,12 @@
   <div id="app">
     <Header></Header>
     <Side></Side>
-    <Music v-if="musicOn" :src="musicSrc" :autoplay="autoplay" :loop="loop"></Music>
+    <Music v-if="musicOn" :src="musicSrc" :autoplay="autoplay" :loop="loop" :name="musicName"></Music>
     <div id="articlecontainer">
       <router-view :key="key"></router-view>
     </div>
     <Nav :key="key"></Nav>
-    <div class="backImg"></div>
+    <div class="backImg" :style="styleObj"></div>
     <Footer></Footer>
   </div>
 </template>
@@ -19,16 +19,20 @@ import Music from "./components/common/music.vue"
 import Side from "./components/common/side.vue"
 import Nav from "./components/common/nav.vue"
 import 'normalize.css';
-import {musicOn , musicSrc ,autoplay , musicLoop} from './theme.config.js';
+import {musicOn , musicSrc ,autoplay , musicLoop ,musicName} from './theme.config.js';
 
 export default {
   name: 'app',
   data(){
     return {
+      styleObj:{
+        'backgroundImage':'url('+require('./src/bg.jpeg')+')'
+      },
       musicOn: musicOn,
       autoplay: autoplay,
       musicSrc:musicSrc,
-      loop: musicLoop
+      loop: musicLoop,
+      musicName:musicName
     }
   },
   components:{
@@ -53,6 +57,12 @@ export default {
 
 
 }
+#articlecontainer img{
+  max-width: 90%;
+  display: block;
+  margin:0 auto;
+
+}
 .backImg{
   z-index: -1;
   background-position: 60% 80%;
@@ -61,9 +71,9 @@ export default {
   height:17rem;
   right:0;
   top:66%;
-  background: url(./src/bg.jpeg) no-repeat;
+  background-repeat: no-repeat;
   background-size: 100% 100%;
-  opacity: 0.5;
+  opacity: 0.3;
 }
 
 #app {

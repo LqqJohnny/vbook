@@ -9,6 +9,7 @@
       </div>
       <artListSkt slot="skeleton"/>
     </vue-lazy-component>
+    <div style="text-align:center;"><router-link :to="firstPage" class="start">开始阅读</router-link></div>
 </div>
 </template>
 
@@ -22,6 +23,12 @@ export default {
     return {
       homePage:homePage,
       slideStart: false
+    }
+  },
+  computed:{
+    firstPage(){
+      var title = arts[1].title;
+      return '/article/'+title;
     }
   },
   components:{
@@ -60,6 +67,17 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.start{
+  height:2rem;
+  color:#fff;
+  background-color: rgb(67, 119, 187);
+  border-radius: .5rem;
+  padding:0.2rem 1rem;
+  line-height: 2rem;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
 .home{
   position: relative;
 }
@@ -93,6 +111,9 @@ export default {
   width:6rem;
   height:1.6rem;
 
+}
+.bookInfo{
+  padding: 0 0.2rem;
 }
 .searchFrame .searchBar{
   display: inline-block;

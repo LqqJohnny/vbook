@@ -7,7 +7,7 @@
         您的浏览器版本过低，无法播放，请及时升级
     </audio>
     <div class="musicname">
-      <marquee behavior="alternate" direction="left" scrollamount=1> &nbsp;&nbsp;&nbsp;  {{musicName}} &nbsp;&nbsp;&nbsp;  </marquee>
+      <marquee behavior="alternate" direction="left" scrollamount=1> &nbsp;&nbsp;&nbsp;  {{name}} &nbsp;&nbsp;&nbsp;  </marquee>
     </div>
     <div class="hide-show" @click="show_hide"> {{showing==1?"<":">"}} </div>
     <div class="controls">
@@ -21,16 +21,11 @@
 <script>
 
 export default {
-  props:["src","autoplay","loop"],
+  props:["src","autoplay","loop",'name'],
   data(){
     return {
         playing:this.autoplay,
         showing:-1 ,  // -1表示初始隐藏  0 初始隐藏但是会有隐藏动画  1表示初始展示 也带动画
-    }
-  },
-  computed:{
-    musicName (){
-      return this.src.replace(/\/static\/media\//,'').split(".")[0];
     }
   },
   methods:{

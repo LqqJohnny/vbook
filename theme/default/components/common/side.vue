@@ -20,7 +20,7 @@ export default {
   data(){
     return {
       chapters:arts,
-      showing: true
+      showing: false
     }
   },
   methods:{
